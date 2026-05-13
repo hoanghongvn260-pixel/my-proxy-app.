@@ -3,96 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProxyV2 - Kiểm tra & Kích hoạt</title>
+    <title>Proxy FF - Phong</title>
     <style>
-        body { background-color: #0b0c10; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .container { width: 100%; max-width: 400px; background: #1a1a1a; border-radius: 20px; padding: 25px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .header { color: #ff9d00; font-size: 26px; font-weight: bold; margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
-        .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-size: 12px; color: #888; font-weight: bold; }
-        input { width: 92%; padding: 14px; background: #000; border: 1px solid #444; color: #fff; border-radius: 10px; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus { border-color: #ff9d00; box-shadow: 0 0 10px rgba(255, 157, 0, 0.2); }
-        input#ipDisplay { color: #00ff00; font-family: monospace; } /* IP hiện màu xanh lá */
-        
-        .btn-orange { width: 100%; padding: 16px; background: linear-gradient(45deg, #ff8c00, #ed6ea0); border: none; color: white; font-weight: bold; border-radius: 10px; cursor: pointer; margin-bottom: 12px; font-size: 16px; transition: 0.3s; }
-        .btn-green { width: 100%; padding: 16px; background: #28a745; border: none; color: white; font-weight: bold; border-radius: 10px; cursor: pointer; font-size: 16px; transition: 0.3s; }
-        .btn-orange:active, .btn-green:active { transform: scale(0.95); opacity: 0.8; }
-        
-        #status-msg { margin-top: 20px; text-align: center; font-size: 14px; color: #ff9d00; min-height: 40px; line-height: 1.5; }
-        .loading-spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid #ff9d00; border-radius: 50%; border-top-color: transparent; animation: spin 0.8s linear infinite; margin-right: 8px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        .box { border: 1px solid #333; padding: 20px; border-radius: 10px; background: #1e1e1e; max-width: 400px; margin: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #2c2c2c; color: white; }
+        button { width: 100%; padding: 12px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .btn-key { background: linear-gradient(to right, #ff8c00, #ff4500); color: white; }
+        #status-msg { margin-top: 15px; font-size: 14px; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">Proxy FF TH – Ihax –</div>
-    
-    <div class="input-group">
-        <label>ĐỊA CHỈ IPV4 CÔNG KHAI</label>
-        <input type="text" id="ipDisplay" placeholder="Đang quét IP..." readonly>
-    </div>
-
-    <div class="input-group">
-        <label>MÃ KEY</label>
-        <input type="text" id="keyInput" placeholder="Nhập mã key tại đây...">
-    </div>
-
-    <button class="btn-orange" onclick="kichHoat()">Kích Hoạt Key</button>
-    <button class="btn-green" onclick="kiemTraHeThong()">Kiểm Tra</button>
-
-    <div id="status-msg">Sẵn sàng. Hệ thống đang chờ lệnh...</div>
-</div>
-
-<script>
-    // 1. TỰ ĐỘNG LẤY IP KHI MỞ TRANG
-    function layIP() {
-        fetch('https://api.ipify.org?format=json')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('ipDisplay').value = data.ip;
-            })
-            .catch(() => {
-                document.getElementById('ipDisplay').value = "Không thể lấy IP";
-            });
-    }
-
-    // Chạy hàm lấy IP ngay khi tải trang
-    window.onload = layIP;
-
-    // 2. XỬ LÝ KÍCH HOẠT KEY
-    function kichHoat() {
-        const key = document.getElementById('keyInput').value;
-        const msg = document.getElementById('status-msg');
-
-        if (key.trim() === "") {
-            msg.innerHTML = "❌ <span style='color:red'>Vui lòng nhập Mã Key trước!</span>";
-            return;
-        }
-
-        msg.innerHTML = "<div class='loading-spinner'></div> Đang xác thực Key trên hệ thống...";
+    <div class="box">
+        <h2>PROXY FF TH - IHAX</h2>
+        <p>ĐỊA CHỈ IP: <span style="color: #00ff00;">14.191.53.14</span></p>
         
-        // Giả lập thời gian chờ xử lý 2.5 giây
-        setTimeout(() => {
-        if (key.toLowerCase() === "phongvip123"){
-   // Đây là mã key "mẹo" để test
-                msg.innerHTML = "✅ <span style='color:#28a745'>Kích hoạt thành công! Proxy đã được mở cho IP của bạn.</span>";
-            } else {
-                msg.innerHTML = "❌ <span style='color:red'>Lỗi: Mã Key '" + key + "' không tồn tại hoặc đã bị dùng.</span>";
+        <input type="text" id="keyInput" placeholder="Nhập mã Key tại đây...">
+        <button class="btn-key" onclick="kichHoat()">Kích Hoạt Key</button>
+        
+        <div id="status-msg"></div>
+    </div>
+
+    <script>
+        function kichHoat() {
+            const key = document.getElementById('keyInput').value.trim();
+            const msg = document.getElementById('status-msg');
+
+            if (key === "") {
+                msg.innerHTML = "<span style='color:red;'>❌ Vui lòng nhập mã Key!</span>";
+                return;
             }
-        }, 2500);
-    }
 
-    // 3. XỬ LÝ KIỂM TRA HỆ THỐNG
-    function kiemTraHeThong() {
-        const msg = document.getElementById('status-msg');
-        msg.innerHTML = "🔍 <span style='color:#28a745'>Đang kiểm tra trạng thái hệ thống...</span>";
-        
-        setTimeout(() => {
-            msg.innerHTML = "✅ Hệ thống Online. Proxy sẵn sàng kết nối.";
-        }, 1500);
-    }
-</script>
+            msg.innerHTML = "⌛ Đang kiểm tra...";
 
+            setTimeout(() => {
+                // ĐOẠN QUAN TRỌNG: Sửa mật khẩu ở đây
+                if (key.toLowerCase() === "phongvip123") {
+                    msg.innerHTML = "<span style='color:#00ff00;'>✅ KÍCH HOẠT THÀNH CÔNG!</span>";
+                } else {
+                    msg.innerHTML = "<span style='color:red;'>❌ Mã Key không chính xác hoặc đã hết hạn.</span>";
+                }
+            }, 1500);
+        }
+    </script>
 </body>
 </html>
