@@ -75,6 +75,12 @@
             box-sizing: border-box;
             font-size: 15px;
         }
+        /* Style cho ô IP tự động nhảy */
+        #ip-display {
+            color: #00ff00;
+            font-weight: bold;
+            border: 1px solid #00ff0044;
+        }
         .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         button {
             border: none;
@@ -104,6 +110,7 @@
             color: white;
             width: 100%;
             margin-top: 10px;
+            margin-bottom: 15px;
         }
         .footer-note {
             background: rgba(212, 160, 23, 0.05);
@@ -129,7 +136,7 @@
         <div class="section-title">🔒 KÍCH HOẠT & TRẠNG THÁI</div>
         
         <div class="input-group">
-            <label>Địa chỉ IPv4 công khai</label>
+            <label>Địa chỉ IPv4 công khai (TỰ ĐỘNG)</label>
             <input type="text" id="ip-display" readonly value="Đang lấy địa chỉ...">
         </div>
 
@@ -156,16 +163,24 @@
 </div>
 
 <script>
-    // Tự động cập nhật link Proxy từ GitHub Codespaces của bạn
+    // CHỨC NĂNG TỰ ĐỘNG CHECK IP NHƯ CÁI ĐẦU TIÊN
     window.onload = function() {
-        const myProxyLink = "fictional-umbrella-r7gqwx69pg97cpgwq-8080.app.github.dev";
-        document.getElementById('ip-display').value = myProxyLink;
+        // Lấy hostname của trang web hiện tại (tự động nhận link .dev của Codespaces)
+        const currentHostname = window.location.hostname;
+        const ipInput = document.getElementById('ip-display');
+        
+        if (currentHostname) {
+            // Hiển thị link trực tiếp vào ô input giống image_56.png
+            ipInput.value = currentHostname;
+        } else {
+            ipInput.value = "Không thể lấy địa chỉ";
+        }
     };
 
     function getFreeKey() {
         // THAY LINK RÚT GỌN CỦA BẠN VÀO ĐÂY ĐỂ KIẾM TIỀN
         window.open('https://your-link-rut-gon.com', '_blank');
-        alert('Vui lòng vượt qua link quảng cáo để nhận mã Key hôm nay!');
+        alert('Vui lòng vượt qua link quảng cáo để nhận mã Key!');
     }
 
     function kichHoat() {
@@ -175,7 +190,7 @@
             msg.innerText = "❌ Vui lòng nhập mã Key!";
             msg.style.color = "#ff4444";
         } else if(key === "IHAX-FREE-2026") {
-            msg.innerText = "✅ Kích hoạt thành công! Proxy đã sẵn sàng.";
+            msg.innerText = "✅ Kích hoạt thành công! Hãy vào game trải nghiệm.";
             msg.style.color = "#00ff00";
         } else {
             msg.innerText = "❌ Key không hợp lệ hoặc đã hết hạn.";
@@ -184,10 +199,10 @@
     }
 
     function checkStatus() {
+        // Hiện thông báo giống hệt trong image_56.png
         alert("Hệ thống: Hoạt động tốt - Độ trễ: 15ms");
     }
 </script>
 
 </body>
 </html>
-p
