@@ -3,48 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy FF - Phong</title>
+    <title>Proxy FF TH - IHAX</title>
     <style>
-        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
-        .box { border: 1px solid #333; padding: 20px; border-radius: 10px; background: #1e1e1e; max-width: 400px; margin: auto; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #2c2c2c; color: white; }
-        button { width: 100%; padding: 12px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        .btn-key { background: linear-gradient(to right, #ff8c00, #ff4500); color: white; }
-        #status-msg { margin-top: 15px; font-size: 14px; }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #1e1e1e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #00ff00;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .info-row {
+            margin: 15px 0;
+            font-size: 14px;
+            text-align: left;
+            background: #252525;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .ip-address {
+            color: #00ff00;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0 10px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #2b2b2b;
+            color: white;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-bottom: 10px;
+        }
+        .btn-key {
+            background: linear-gradient(90deg, #00ff00, #008000);
+            color: black;
+        }
+        .btn-key:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+        .btn-free {
+            background: #444;
+            color: white;
+            font-size: 12px;
+        }
+        .btn-free:hover {
+            background: #555;
+        }
+        #status-msg {
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        .features {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>PROXY FF TH - IHAX</h2>
-        <p>ĐỊA CHỈ IP: <span style="color: #00ff00;">fictional-umbrella-r7gqwx69pg97cpgwq.github.dev</span></p>
-        
-        <input type="text" id="keyInput" placeholder="Nhập mã Key tại đây...">
-        <button class="btn-key" onclick="kichHoat()">Kích Hoạt Key</button>
-        
-        <div id="status-msg"></div>
+
+<div class="box">
+    <h2>PROXY FF TH - IHAX</h2>
+    
+    <div class="info-row">
+        <span>● TRẠNG THÁI: </span> <span style="color: #00ff00;">HOẠT ĐỘNG</span>
     </div>
 
-    <script>
-        function kichHoat() {
-            const key = document.getElementById('keyInput').value.trim();
-            const msg = document.getElementById('status-msg');
+    <div class="info-row">
+        <span>● ĐỊA CHỈ PROXY:</span><br>
+        <span id="ip-display" class="ip-address">Đang tải...</span>
+    </div>
 
-            if (key === "") {
-                msg.innerHTML = "<span style='color:red;'>❌ Vui lòng nhập mã Key!</span>";
-                return;
-            }
+    <input type="text" id="keyInput" placeholder="Nhập mã Key tại đây...">
+    
+    <button class="btn-key" onclick="kichHoat()">KÍCH HOẠT KEY</button>
+    
+    <button class="btn-free" onclick="getFreeKey()">LẤY KEY MIỄN PHÍ (GET KEY)</button>
 
-            msg.innerHTML = "⌛ Đang kiểm tra...";
+    <div id="status-msg"></div>
 
-            setTimeout(() => {
-                // ĐOẠN QUAN TRỌNG: Sửa mật khẩu ở đây
-                if (key.toLowerCase() === "phongvip123") {
-                    msg.innerHTML = "<span style='color:#00ff00;'>✅ KÍCH HOẠT THÀNH CÔNG!</span>";
-                } else {
-                    msg.innerHTML = "<span style='color:red;'>❌ Mã Key không chính xác hoặc đã hết hạn.</span>";
-                }
-            }, 1500);
+    <div class="features">
+        -> All IOS / Android<br>
+        -> Anti-Ban & High Speed<br>
+        -> Không cần chứng chỉ
+    </div>
+</div>
+
+<script>
+    // Tự động lấy địa chỉ từ URL hiện tại
+    window.onload = function() {
+        // Thay link cố định nếu link tự động không hiện đúng
+        const currentUrl = "fictional-umbrella-r7gqwx69pg97cpgwq-8080.app.github.dev";
+        document.getElementById('ip-display').innerText = currentUrl;
+    };
+
+    function kichHoat() {
+        const key = document.getElementById('keyInput').value;
+        const msg = document.getElementById('status-msg');
+        
+        if(key === "") {
+            msg.innerHTML = '<span style="color: #ff4444;">Vui lòng nhập Key!</span>';
+        } else if(key === "IHAX-FREE-2026") { // Đây là Key bạn cài đặt
+            msg.innerHTML = '<span style="color: #00ff00;">Kích hoạt thành công! Hãy vào Game.</span>';
+        } else {
+            msg.innerHTML = '<span style="color: #ff4444;">Key không chính xác hoặc đã hết hạn.</span>';
         }
-    </script>
+    }
+
+    function getFreeKey() {
+        // Thay link dưới bằng link rút gọn kiếm tiền của bạn
+        window.open('https://your-link-rut-gon.com', '_blank');
+        alert('Vui lòng vượt qua link rút gọn để nhận mã Key!');
+    }
+</script>
+
 </body>
 </html>
