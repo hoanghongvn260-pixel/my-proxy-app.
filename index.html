@@ -3,206 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProxyV2 - Ihax</title>
+    <title>ProxyV2 - Ihax Complete</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --accent-orange: #ff6a00;
-            --accent-green: #28a745;
-            --text-main: #ffffff;
-            --text-dim: #888;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 450px;
-        }
-        .header-card {
-            background: linear-gradient(135deg, #2b1b10 0%, #1a1a1a 100%);
-            border: 1px solid #3d2b1f;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .status-badge {
-            background: rgba(255, 106, 0, 0.1);
-            color: var(--accent-orange);
-            font-size: 10px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 106, 0, 0.3);
-        }
-        h1 { margin: 0; font-size: 28px; font-weight: 800; }
-        .sub-text { color: var(--text-dim); font-size: 13px; margin-top: 10px; }
-
-        .main-card {
-            background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 20px;
-        }
-        .section-title {
-            color: #d4a017;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        label { display: block; color: var(--text-dim); font-size: 12px; margin-bottom: 8px; text-transform: uppercase; }
-        .input-group { margin-bottom: 20px; }
-        input {
-            width: 100%;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            color: white;
-            box-sizing: border-box;
-            font-size: 15px;
-        }
-        /* Style cho ô IP tự động nhảy */
-        #ip-display {
-            color: #00ff00;
-            font-weight: bold;
-            border: 1px solid #00ff0044;
-        }
-        .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        button {
-            border: none;
-            border-radius: 12px;
-            padding: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-        .btn-activate { background: #ff8c00; color: white; }
-        .btn-check { background: #28a745; color: white; }
-        
-        .btn-secondary {
-            background: #252525;
-            color: #ddd;
-            width: 100%;
-            margin-bottom: 10px;
-            border: 1px solid #333;
-            font-size: 13px;
-        }
-        .btn-get-key {
-            background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
-            color: white;
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 15px;
-        }
-        .footer-note {
-            background: rgba(212, 160, 23, 0.05);
-            border: 1px dashed #d4a017;
-            border-radius: 12px;
-            padding: 15px;
-            font-size: 13px;
-            color: #d4a017;
-            margin-top: 20px;
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+        .main-card { background-color: #151515; border: 1px solid #222; border-radius: 20px; }
+        .input-field { background-color: #0f0f0f; border: 1px solid #222; color: #ddd; width: 100%; padding: 12px; border-radius: 10px; outline: none; }
+        .btn-orange { background: linear-gradient(to right, #f97316, #ea580c); transition: 0.2s; }
+        .btn-orange:active { transform: scale(0.98); opacity: 0.9; }
+        .btn-green { background: linear-gradient(to right, #22c55e, #16a34a); transition: 0.2s; }
+        .btn-green:active { transform: scale(0.98); opacity: 0.9; }
+        .btn-dark { background-color: #1a1a1a; border: 1px solid #2a2a2a; color: #ccc; }
+        .dashed-box { border: 1px dashed #444; background: #1a1a1a; border-radius: 10px; min-height: 45px; display: flex; align-items: center; padding: 0 15px; }
+        .status-success { border-color: #22c55e; color: #22c55e; background: rgba(34, 197, 94, 0.05); }
+        .status-error { border-color: #ef4444; color: #ef4444; background: rgba(239, 68, 68, 0.05); }
     </style>
 </head>
-<body>
+<body class="p-4 flex justify-center">
 
-<div class="container">
-    <div class="header-card">
-        <div class="status-badge">● PROXY SYSTEM ONLINE</div>
-        <h1>Proxy FF TH <br>— Ihax —</h1>
-        <div class="sub-text">Kích hoạt proxy siêu tốc · Giao diện chiến thuật · Kiểm soát toàn diện</div>
+    <div class="w-full max-w-md">
+        <div class="flex justify-between items-center mb-6 px-2">
+            <span class="text-gray-400 text-sm">Close</span>
+            <div class="text-center">
+                <h1 class="text-md font-bold">ProxyV2 - Ihax</h1>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest">mini app</p>
+            </div>
+            <i class="fas fa-ellipsis-h text-gray-400"></i>
+        </div>
+
+        <div class="main-card p-5 mb-4">
+            <h3 class="text-orange-400 text-[11px] font-bold mb-4 flex items-center">
+                <i class="fas fa-lock mr-2"></i> KÍCH HOẠT & TRẠNG THÁI
+            </h3>
+
+            <div class="mb-4">
+                <label class="text-[10px] text-gray-500 block mb-1 font-bold">ĐỊA CHỈ IPV4 CÔNG KHAI</label>
+                <input type="text" id="ipAddress" class="input-field text-sm" value="14.191.53.14" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label class="text-[10px] text-gray-500 block mb-1 font-bold">MÃ KEY</label>
+                <input type="text" id="keyInput" class="input-field text-sm" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                <p class="text-[10px] text-gray-600 mt-2">Nhập key rồi nhấn Kích Hoạt bên dưới</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <button onclick="handleActivate()" class="btn-orange py-3 rounded-xl font-bold text-sm">
+                    <i class="fas fa-bolt mr-2 text-xs"></i> Kích Hoạt Key
+                </button>
+                <button onclick="handleCheck()" class="btn-green py-3 rounded-xl font-bold text-sm">
+                    <i class="fas fa-chart-bar mr-2 text-xs"></i> Kiểm Tra
+                </button>
+            </div>
+
+            <div class="space-y-2 mb-4">
+                <button class="btn-dark w-full py-3 rounded-xl text-xs flex items-center justify-center">
+                    <i class="fas fa-book text-blue-400 mr-2"></i> Hướng Dẫn Proxy
+                </button>
+                <button onclick="detectIP()" class="btn-dark w-full py-3 rounded-xl text-xs flex items-center justify-center">
+                    <i class="fas fa-globe text-blue-300 mr-2"></i> Phát Hiện IP Công Khai
+                </button>
+                <button onclick="formatKey()" class="btn-dark w-full py-3 rounded-xl text-xs flex items-center justify-center">
+                    <i class="fas fa-broom text-yellow-600 mr-2"></i> Tự Động Định Dạng Key
+                </button>
+            </div>
+
+            <div id="statusBox" class="dashed-box text-[11px] text-orange-200/50">
+                Không có key nào đang hoạt động trên tài khoản này.
+            </div>
+        </div>
+
+        <div class="main-card p-5">
+            <h3 class="text-orange-400 text-[11px] font-bold mb-4 flex items-center">
+                <i class="fas fa-dna mr-2"></i> THÔNG TIN THIẾT BỊ
+            </h3>
+
+            <div class="mb-4">
+                <label class="text-[10px] text-orange-600 block mb-1 font-bold">MÃ THIẾT BỊ</label>
+                <div id="deviceId" class="text-[10px] text-gray-500 break-all font-mono bg-black/20 p-2 rounded border border-gray-900">
+                    dbe95263-56af-4a8c-a5bb-bbe3b93ba7fb
+                </div>
+            </div>
+
+            <div>
+                <label class="text-[10px] text-orange-600 block mb-1 font-bold">NGƯỜI DÙNG</label>
+                <div class="text-[11px] text-gray-500 font-mono bg-black/20 p-2 rounded border border-gray-900">
+                    7278223515
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="main-card">
-        <div class="section-title">🔒 KÍCH HOẠT & TRẠNG THÁI</div>
-        
-        <div class="input-group">
-            <label>Địa chỉ IPv4 công khai (TỰ ĐỘNG)</label>
-            <input type="text" id="ip-display" readonly value="Đang lấy địa chỉ...">
-        </div>
+    <script>
+        // CẤU HÌNH KEY (Thay đổi tại đây)
+        const MASTER_KEY = "IHAX-2024-FREE";
 
-        <div class="input-group">
-            <label>Mã Key</label>
-            <input type="text" id="keyInput" placeholder="XXXX—XXXX—XXXX">
-        </div>
-
-        <div class="button-grid">
-            <button class="btn-activate" onclick="kichHoat()">⚡ Kích Hoạt Key</button>
-            <button class="btn-check" onclick="checkStatus()">📊 Kiểm Tra</button>
-        </div>
-
-        <button class="btn-get-key" onclick="getFreeKey()">🎁 LẤY KEY MIỄN PHÍ (GET KEY FREE)</button>
-
-        <button class="btn-secondary">📘 Hướng Dẫn Proxy</button>
-        <button class="btn-secondary">🌍 Phát Hiện IP Công Khai</button>
-        <button class="btn-secondary">🧹 Tự Động Định Dạng Key</button>
-
-        <div class="footer-note" id="status-msg">
-            Sẵn sàng. Kích hoạt key hoặc kiểm tra trạng thái hiện tại.
-        </div>
-    </div>
-</div>
-
-<script>
-    // CHỨC NĂNG TỰ ĐỘNG CHECK IP NHƯ CÁI ĐẦU TIÊN
-    window.onload = function() {
-        // Lấy hostname của trang web hiện tại (tự động nhận link .dev của Codespaces)
-        const currentHostname = window.location.hostname;
-        const ipInput = document.getElementById('ip-display');
-        
-        if (currentHostname) {
-            // Hiển thị link trực tiếp vào ô input giống image_56.png
-            ipInput.value = currentHostname;
-        } else {
-            ipInput.value = "Không thể lấy địa chỉ";
+        // 1. Lấy IP thực tế
+        async function detectIP() {
+            const ipInput = document.getElementById('ipAddress');
+            const statusBox = document.getElementById('statusBox');
+            ipInput.value = "Đang lấy IP...";
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                ipInput.value = data.ip;
+                statusBox.innerHTML = `✅ Đã phát hiện IP công khai: ${data.ip}`;
+                statusBox.className = "dashed-box text-[11px] status-success";
+            } catch (e) {
+                ipInput.value = "14.191.53.14";
+                statusBox.innerText = "Lỗi kết nối API. Đang sử dụng IP mặc định.";
+            }
         }
-    };
 
-    function getFreeKey() {
-        // THAY LINK RÚT GỌN CỦA BẠN VÀO ĐÂY ĐỂ KIẾM TIỀN
-        window.open('https://your-link-rut-gon.com', '_blank');
-        alert('Vui lòng vượt qua link quảng cáo để nhận mã Key!');
-    }
-
-    function kichHoat() {
-        const key = document.getElementById('keyInput').value;
-        const msg = document.getElementById('status-msg');
-        if(key === "") {
-            msg.innerText = "❌ Vui lòng nhập mã Key!";
-            msg.style.color = "#ff4444";
-        } else if(key === "IHAX-FREE-2026") {
-            msg.innerText = "✅ Kích hoạt thành công! Hãy vào game trải nghiệm.";
-            msg.style.color = "#00ff00";
-        } else {
-            msg.innerText = "❌ Key không hợp lệ hoặc đã hết hạn.";
-            msg.style.color = "#ff4444";
+        // 2. Định dạng Key khi gõ
+        function formatKey() {
+            let input = document.getElementById('keyInput');
+            let val = input.value.replace(/[^a-zA-Z0-9]/g, '');
+            let parts = val.match(/.{1,4}/g);
+            input.value = parts ? parts.join('-').toUpperCase() : val.toUpperCase();
         }
-    }
 
-    function checkStatus() {
-        // Hiện thông báo giống hệt trong image_56.png
-        alert("Hệ thống: Hoạt động tốt - Độ trễ: 15ms");
-    }
-</script>
+        // 3. Xử lý Kích Hoạt
+        function handleActivate() {
+            const key = document.getElementById('keyInput').value;
+            const statusBox = document.getElementById('statusBox');
+            
+            if (!key) {
+                statusBox.innerText = "Vui lòng nhập mã Key!";
+                statusBox.className = "dashed-box text-[11px] status-error";
+                return;
+            }
 
+            statusBox.innerHTML = "<i class='fas fa-spinner fa-spin mr-2'></i> Đang xác thực Key...";
+            
+            setTimeout(() => {
+                if (key === MASTER_KEY) {
+                    statusBox.innerHTML = "✅ Kích hoạt thành công! Proxy đang được thiết lập.";
+                    statusBox.className = "dashed-box text-[11px] status-success";
+                    alert("Kích hoạt thành công!");
+                } else {
+                    statusBox.innerHTML = "❌ Mã Key không chính xác hoặc đã hết hạn!";
+                    statusBox.className = "dashed-box text-[11px] status-error";
+                }
+            }, 1200);
+        }
+
+        // 4. Nút Kiểm Tra
+        function handleCheck() {
+            alert("Hệ thống đang hoạt động bình thường.");
+        }
+
+        // Tự động chạy khi mở
+        window.onload = () => {
+            document.getElementById('keyInput').addEventListener('input', formatKey);
+            // Có thể gọi detectIP() ở đây nếu muốn tự động lấy IP lúc vào app
+        };
+    </script>
 </body>
 </html>
